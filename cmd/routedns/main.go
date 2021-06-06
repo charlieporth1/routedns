@@ -384,7 +384,8 @@ func instantiateGroup(id string, g group, resolvers map[string]rdns.Resolver) er
 			return fmt.Errorf("type fastest-tcp only supports one resolver in '%s'", id)
 		}
 		opt := rdns.FastestTCPOptions{
-			Port: g.Port,
+			Port:    g.Port,
+			WaitAll: g.WaitAll,
 		}
 		resolvers[id] = rdns.NewFastestTCP(id, gr[0], opt)
 	case "ecs-modifier":
